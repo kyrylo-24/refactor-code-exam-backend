@@ -13,6 +13,7 @@ interface Data {
 
 const data: Data = require("./data.json");
 
+const apiUrl = "http://localhost:3000";
 
 test("list warnings with states", async () => {
     const states = data.warningsByState.states;
@@ -21,7 +22,7 @@ test("list warnings with states", async () => {
     // Check each state has matching results
     for (const state of states) {
         console.log(`Checking state: ${state}`);
-        const response = await fetch(`http://localhost:3000/?state=${state}`);
+        const response = await fetch(`${apiUrl}/?state=${state}`);
         expect(response.status).toBe(200);
 
         // Wait for server to update file
@@ -35,13 +36,13 @@ test("list warnings with states", async () => {
 });
 
 test("list warnings without state", async () => {
-    const response = await fetch("http://localhost:3000/");
+    const response = await fetch(`${apiUrl}/`);
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual([]);
 });
 
 test("get detailed warning", async () => {
-    const response = await fetch(`http://localhost:3000/warning/${data.detailedWarning.id}`);
+    const response = await fetch(`${apiUrl}/warning/${data.detailedWarning.id}`);
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual(data.detailedWarning.result);
 });
