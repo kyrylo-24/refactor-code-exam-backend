@@ -16,6 +16,9 @@ export class WarningsService {
 
   async getWarningDetails(key: string) {
     const { data } = await this.apiClientService.getWarningDetails(key);
-    return data;
+    return {
+      ...data,
+      productType: 'Mixed',
+    };
   }
 }

@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ApiClientModule } from './api-client/api-client.module';
 import { WarningsModule } from './warnings/warnings.module';
 import configuration from './config/configuration';
+import { HttpLoggerMiddleware } from '@nest-toolbox/http-logger-middleware';
 
 @Module({
   controllers: [],
@@ -16,4 +17,11 @@ import configuration from './config/configuration';
     WarningsModule,
   ],
 })
-export class WarningsServiceLegacyAdapterModule {}
+export class WarningsServiceLegacyAdapterModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(HttpLoggerMiddleware).forRoutes({
+      path: "*",
+      method: RequestMethod.ALL,
+    });
+  }
+}

@@ -1,7 +1,7 @@
 import { registerAs } from '@nestjs/config';
 
 export default registerAs('app', () => ({
-  port: parseInt(process.env.PORT, 10) || 3002,
+  port: parseInt(process.env.PORT, 10) || 4002,
   ftp: {
     host: process.env.FTP_HOST || 'ftp.bom.gov.au',
     secure: false,
@@ -11,6 +11,6 @@ export default registerAs('app', () => ({
     retryDelay: parseInt(process.env.FTP_RETRY_DELAY, 10) || 1000,
   },
   service: {
-    url: process.env.SERVICE_URL || 'http://localhost:3000',
+    url: process.env.SERVICE_URL || 'http://localhost:4000',
   }
 }));

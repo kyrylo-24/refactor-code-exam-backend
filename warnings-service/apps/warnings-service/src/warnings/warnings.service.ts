@@ -23,7 +23,7 @@ export class WarningsService {
     let warnings = this.dbService.getWarnings(stateId);
 
     if (!warnings) {
-      this.logger.log(`No warnings found for state ${stateId}`);
+      this.logger.log(`No warnings found for state ${state}`);
       warnings = await this.workerClientService.getWarnings();
       this.saveWarnings(warnings);
       warnings = this.dbService.getWarnings(stateId);

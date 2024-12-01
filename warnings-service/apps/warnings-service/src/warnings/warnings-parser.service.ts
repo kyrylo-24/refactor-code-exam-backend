@@ -70,8 +70,8 @@ export class WarningsParserService {
       );
     }
 
-    const issueTime = json.amoc['issue-time-utc']?.[0];
-    const expiryTime = json.amoc['expiry-time']?.[0];
+    const issueTime = json.amoc['issue-time-utc'];
+    const expiryTime = json.amoc['expiry-time'];
 
     return {
       productType,
