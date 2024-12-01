@@ -9,5 +9,5 @@ export default registerAs('app', () => ({
     tempDir: process.env.TEMP_DIR || '/tmp',
     retryAttempts: parseInt(process.env.FTP_RETRY_ATTEMPTS, 10) || 3,
     retryDelay: parseInt(process.env.FTP_RETRY_DELAY, 10) || 1000,
-  }
+  },
 }));

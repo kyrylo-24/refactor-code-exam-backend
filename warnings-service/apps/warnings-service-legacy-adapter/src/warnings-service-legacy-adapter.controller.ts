@@ -3,7 +3,9 @@ import { WarningsServiceLegacyAdapterService } from './warnings-service-legacy-a
 
 @Controller()
 export class WarningsServiceLegacyAdapterController {
-  constructor(private readonly warningsServiceLegacyAdapterService: WarningsServiceLegacyAdapterService) {}
+  constructor(
+    private readonly warningsServiceLegacyAdapterService: WarningsServiceLegacyAdapterService,
+  ) {}
 
   @Get()
   getHello(): string {

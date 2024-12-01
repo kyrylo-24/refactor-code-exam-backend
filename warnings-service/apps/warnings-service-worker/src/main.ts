@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
-import { WarningsServiceWorkerModule } from './warnings-service-worker.module';
 import { ConfigService } from '@nestjs/config';
 import { Logger } from '@nestjs/common';
+import { WarningsServiceWorkerModule } from './warnings-service-worker.module';
 
 async function bootstrap() {
   const logger = new Logger('WarningsServiceWorker');

@@ -4,6 +4,6 @@ import { FtpModule } from '../ftp/ftp.module';
 
 @Module({
   imports: [FtpModule],
-  providers: [WorkerService]
+  providers: [WorkerService],
 })
 export class WorkerModule {}

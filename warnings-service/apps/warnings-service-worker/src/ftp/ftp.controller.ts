@@ -15,7 +15,7 @@ export class FtpController {
     return this.ftpService.downloadWarning(key);
   }
 
-  @Get('warnings/:key/text') 
+  @Get('warnings/:key/text')
   async getWarningText(@Param('key') key: string) {
     return this.ftpService.downloadWarningText(key);
   }

@@ -11,12 +11,17 @@ describe('WarningsServiceLegacyAdapterController', () => {
       providers: [WarningsServiceLegacyAdapterService],
     }).compile();
 
-    warningsServiceLegacyAdapterController = app.get<WarningsServiceLegacyAdapterController>(WarningsServiceLegacyAdapterController);
+    warningsServiceLegacyAdapterController =
+      app.get<WarningsServiceLegacyAdapterController>(
+        WarningsServiceLegacyAdapterController,
+      );
   });
 
   describe('root', () => {
     it('should return "Hello World!"', () => {
-      expect(warningsServiceLegacyAdapterController.getHello()).toBe('Hello World!');
+      expect(warningsServiceLegacyAdapterController.getHello()).toBe(
+        'Hello World!',
+      );
     });
   });
 });
