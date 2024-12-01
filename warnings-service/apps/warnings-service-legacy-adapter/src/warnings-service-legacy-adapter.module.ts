@@ -1,10 +1,19 @@
 import { Module } from '@nestjs/common';
-import { WarningsServiceLegacyAdapterController } from './warnings-service-legacy-adapter.controller';
-import { WarningsServiceLegacyAdapterService } from './warnings-service-legacy-adapter.service';
+import { ConfigModule } from '@nestjs/config';
+import { ApiClientModule } from './api-client/api-client.module';
+import { WarningsModule } from './warnings/warnings.module';
+import configuration from './config/configuration';
 
 @Module({
-  imports: [],
-  controllers: [WarningsServiceLegacyAdapterController],
-  providers: [WarningsServiceLegacyAdapterService],
+  controllers: [],
+  providers: [],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configuration],
+    }),
+    ApiClientModule,
+    WarningsModule,
+  ],
 })
 export class WarningsServiceLegacyAdapterModule {}
