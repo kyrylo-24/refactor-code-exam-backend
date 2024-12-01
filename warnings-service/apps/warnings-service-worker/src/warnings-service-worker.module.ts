@@ -4,6 +4,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { FtpModule } from './ftp/ftp.module';
 import { WorkerModule } from './worker/worker.module';
 import { UtilsModule } from './utils/utils.module';
+import { ServiceClientModule } from './service-client/service-client.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -16,6 +17,7 @@ import configuration from './config/configuration';
     FtpModule,
     WorkerModule,
     UtilsModule,
+    ServiceClientModule,
   ],
   controllers: [],
   providers: [],

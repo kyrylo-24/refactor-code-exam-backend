@@ -11,15 +11,11 @@ export class WorkerClientService {
     private readonly httpService: HttpService,
     private readonly configService: ConfigService,
   ) {
-    const workerUrl = configService.get('app.worker.url');
+    this.workerUrl = configService.get('app.worker.url');
 
-    console.log('workerUrl', workerUrl);
-
-    if (!workerUrl) {
+    if (!this.workerUrl) {
       throw new Error('Worker URL is not set');
     }
-
-    this.workerUrl = workerUrl;
   }
 
   async getWarnings() {

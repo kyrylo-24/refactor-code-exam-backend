@@ -8,5 +8,6 @@ import { WorkerClientModule } from '../worker-client/worker-client.module';
   controllers: [WarningsController],
   providers: [WarningsService, WarningsParserService],
   imports: [WorkerClientModule],
+  exports: [WarningsService],
 })
 export class WarningsModule {}

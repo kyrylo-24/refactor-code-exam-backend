@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { UtilsService } from '../utils/utils.service';
 import { State } from '../types/state.type';
 import { DbService } from '../db/db.service';
@@ -15,16 +15,19 @@ export class WarningsService {
     private readonly warningsParserService: WarningsParserService,
   ) {}
 
+  private readonly logger = new Logger(WarningsService.name);
+
   async getWarnings(state: State): Promise<string[]> {
     const stateId = this.utilsService.amocToStateId(state);
 
     let warnings = this.dbService.getWarnings(stateId);
 
     if (!warnings) {
+      this.logger.log(`No warnings found for state ${stateId}`);
       warnings = await this.workerClientService.getWarnings();
       this.saveWarnings(warnings);
       warnings = this.dbService.getWarnings(stateId);
-    } 
+    }
 
     return warnings;
   }
@@ -52,7 +55,7 @@ export class WarningsService {
     };
   }
 
-  private saveWarnings(warnings: string[]) {
+  saveWarnings(warnings: string[]) {
     const stateIds = this.utilsService.getStateIds();
 
     for (const stateId of stateIds) {

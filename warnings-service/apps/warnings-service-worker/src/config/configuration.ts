@@ -10,4 +10,7 @@ export default registerAs('app', () => ({
     retryAttempts: parseInt(process.env.FTP_RETRY_ATTEMPTS, 10) || 3,
     retryDelay: parseInt(process.env.FTP_RETRY_DELAY, 10) || 1000,
   },
+  service: {
+    url: process.env.SERVICE_URL || 'http://localhost:3000',
+  }
 }));
